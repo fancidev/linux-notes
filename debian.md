@@ -2,9 +2,6 @@
 
 ## Installing Debian on Hyper-V (Windows 10)
 
-
-### Post-installation configuration
-
 ### Configure package source
 
 If network is not available during installation, the setup program will not
@@ -15,24 +12,24 @@ The solution is to edit `/etc/apt/sources.list` and add package sources. For
 convenience and reliability, I just add the primary source (rather than
 mirrors). The following lines are suitable:
 
-  # This is the main source for packages.
-  deb http://deb.debian.org/debian stretch main
-  deb-src http://deb.debian.org/debian stretch main
+```
+# This is the main source for packages.
+deb http://deb.debian.org/debian stretch main
+deb-src http://deb.debian.org/debian stretch main
 
-  # This is the source for security packages.
-  deb http://security.debian.org/debian-security stretch/updates main
-  deb-src http://security.debian.org/debian-security stretch/updates main
+# This is the source for security packages.
+deb http://security.debian.org/debian-security stretch/updates main
+deb-src http://security.debian.org/debian-security stretch/updates main
 
-  # Below sources are urgent updates to the main packages, but not as urgent
-  # as those in the security source.
-  deb http://deb.debian.org/debian/ stretch-updates main
-  deb-src http://deb.debian.org/debian/ stretch-updates main
+# Below sources are urgent updates to the main packages, but not as urgent
+# as those in the security source.
+deb http://deb.debian.org/debian/ stretch-updates main
+deb-src http://deb.debian.org/debian/ stretch-updates main
+```
 
 Notes:
-
-  `deb` is for binary package. `deb-src` is for source-code package.
-
-  `stretch` is the code name for Debian 9.
+- `deb` is for binary package. `deb-src` is for source-code package.
+- `stretch` is the code name for Debian 9.
 
 After adding the package sources, run `apt update` from root to refresh the
 local package cache. This command visits each configured source and downloads
